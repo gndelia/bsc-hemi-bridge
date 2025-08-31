@@ -1,2 +1,9 @@
 # bsc-hemi-bridge
-privately testing bsc-hemi-bridge
+
+## Dev Setup
+
+Run:
+
+```sh
+npm i
+```

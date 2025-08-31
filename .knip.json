@@ -1,0 +1,15 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreDependencies": ["eslint-config-prettier"],
+  "workspaces": {
+    "website": {
+      "entry": ["src/main.tsx"],
+      "paths": {
+        "components/*": ["src/components/*"],
+        "hooks/*": ["src/hooks/*"],
+        "types/*": ["src/types/*"],
+        "utils/*": ["src/utils/*"]
+      }
+    }
+  }
+}

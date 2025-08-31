@@ -1,0 +1,38 @@
+{
+  "name": "bsc-hemi-bridge",
+  "version": "1.0.0",
+  "description": "Bsc-Hemi bridge over LayerZero",
+  "keywords": [
+    "BSC",
+    "Binance Smart Chain",
+    "hemi",
+    "hemilabs",
+    "LayerZero",
+    "viem"
+  ],
+  "license": "MIT",
+  "author": {
+    "email": "gonzalo@hemi.xyz",
+    "name": "Gonzalo D'Elia"
+  },
+  "scripts": {
+    "tsc:check": "tsc"
+  },
+  "dependencies": {
+    "hemi-viem": "2.6.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.5",
+    "@types/node": "20.12.12",
+    "typescript": "5.8.3",
+    "viem": "2.22.10",
+    "viem-erc20": "1.0.1"
+  },
+  "peerDependencies": {
+    "viem": "^2.x"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./actions": "./actions/index.ts"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "bsc-bridge",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "prepreview": "npm run build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@binance/w3w-rainbow-connector-v2": "1.0.2",
+    "@rainbow-me/rainbowkit": "2.2.4",
+    "@tanstack/react-query": "5.69.0",
+    "big.js": "7.0.1",
+    "bsc-hemi-bridge": "1.0.0",
+    "crypto-shortener": "1.2.0",
+    "hemi-viem": "2.4.0",
+    "rc-tooltip": "6.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-loading-skeleton": "3.5.0",
+    "smart-round": "3.0.0",
+    "tiny-fetch-json": "1.0.0",
+    "viem": "2.22.10",
+    "wagmi": "2.14.8"
+  },
+  "devDependencies": {
+    "@tsconfig/vite-react": "3.4.0",
+    "@types/big.js": "6.2.2",
+    "@types/node": "20.12.12",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.18",
+    "@vitejs/plugin-react": "4.4.1",
+    "autoprefixer": "10.4.16",
+    "postcss": "8.4.32",
+    "postcss-import": "16.1.0",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.8.3",
+    "vite": "6.3.5",
+    "vite-tsconfig-paths": "5.1.4"
+  },
+  "type": "module"
+}
