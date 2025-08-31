@@ -1,0 +1,30 @@
+name: GitHub Pages Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  pages: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hemilabs/actions/setup-node-env@v1
+      - run: cd website && npm run build
+      - id: deployment
+        uses: hemilabs/actions/deploy-to-ghp@3018c41d5e6f18de555804303ab3d0402e670f98 # PR#24
+        with:
+          publish-dir: website/dist
+    timeout-minutes: 2
