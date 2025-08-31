@@ -6,7 +6,7 @@ import { Token } from "types/token";
 import { WalletClient } from "viem";
 import { useAccount, useWalletClient } from "wagmi";
 
-import { useTokenBalance } from "./useBalance";
+import { useNativeTokenBalance, useTokenBalance } from "./useBalance";
 import { useUpdateNativeBalanceAfterReceipt } from "./useInvalidateNativeBalanceAfterReceipt";
 
 export const useBridgeHemi = function ({
@@ -17,6 +17,9 @@ export const useBridgeHemi = function ({
   on: (emitter: EventEmitter<BridgeEvents>) => void;
 }) {
   const { address } = useAccount();
+  const { queryKey: nativeTokenBalanceQueryKey } = useNativeTokenBalance(
+    fromToken.chainId,
+  );
   const queryClient = useQueryClient();
   const { data: walletClient } = useWalletClient();
 
@@ -48,12 +51,6 @@ export const useBridgeHemi = function ({
 
       emitter.on("bridge-transaction-succeeded", function (receipt) {
         updateNativeBalanceAfterFees(receipt);
-
-        queryClient.setQueriesData(
-          // @ts-expect-error works in runtime
-          hemiBalanceSourceQueryKey,
-          (old: bigint) => old - amount,
-        );
       });
 
       emitter.on("bridge-transaction-reverted", function (receipt) {
@@ -63,6 +60,14 @@ export const useBridgeHemi = function ({
       on(emitter);
 
       return promise;
+    },
+    onSettled() {
+      queryClient.invalidateQueries({
+        queryKey: hemiBalanceSourceQueryKey,
+      });
+      queryClient.invalidateQueries({
+        queryKey: nativeTokenBalanceQueryKey,
+      });
     },
   });
 };
