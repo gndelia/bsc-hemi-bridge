@@ -25,6 +25,9 @@ jobs:
       - run: cd website && npm run build
       - id: deployment
         uses: hemilabs/actions/deploy-to-ghp@3018c41d5e6f18de555804303ab3d0402e670f98 # PR#24
+        env:
+          VITE_PUBLIC_PORTAL_API_URL: ${{ vars.VITE_PUBLIC_PORTAL_API_URL }}
+          VITE_PUBLIC_WALLET_CONNECT_PROJECT_ID: ${{ secrets.VITE_PUBLIC_WALLET_CONNECT_PROJECT_ID }}
         with:
           publish-dir: website/dist
     timeout-minutes: 2
