@@ -1,9 +1,11 @@
 import { Bridge } from "components/bridge";
 import { HeartIcon } from "components/icons/heart";
+import { Notice } from "components/notice";
 
 export const App = () => (
   <div className="flex h-screen flex-col">
     <main className="my-auto justify-self-center">
+      <Notice />
       <Bridge />
     </main>
     <footer className="justify-self-end pb-4">
